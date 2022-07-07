@@ -26,7 +26,7 @@ const getDivedNumbers = (n) => {
 
 // Moltiplico tutte le digit e ritorno il risultato;
 const getMultipledDigits = (n) => {
-    if (n.toString().length > 1) {
+    if (n != undefined && n.toString().length > 1 ) {
         const numbersToResistence = getDivedNumbers(n);
         const multipliedNumbers = numbersToResistence.reduce((previousValue, currentValue) => previousValue * currentValue);
         return multipliedNumbers;
@@ -43,6 +43,6 @@ const getResistence = (n, memo = []) => {
     }
 }
 
+const resistence = getResistence(882)
 
-
-console.log(getResistence(882).length);
+console.log(resistence.length);

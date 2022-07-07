@@ -26,7 +26,7 @@ const getDivedNumbers = (n) => {
 
 // Moltiplico tutte le digit e ritorno il risultato;
 const getMultipledDigits = (n) => {
-    if (n != undefined && n.toString().length > 1 ) {
+    if (n != undefined && n.toString().length > 1) {
         const numbersToResistence = getDivedNumbers(n);
         const multipliedNumbers = numbersToResistence.reduce((previousValue, currentValue) => previousValue * currentValue);
         return multipliedNumbers;
@@ -35,12 +35,10 @@ const getMultipledDigits = (n) => {
 
 // Con il risultato ottenuto sfrutto la ricorsività per richiamare getResistece fino a che esiste un numero da moltiplicare;
 const getResistence = (n, memo = []) => {
-    let multipliedNumber = getMultipledDigits(n)
-    if (multipliedNumber !== undefined) {
-        memo.push(multipliedNumber)
-        let resistence =  memo.concat(getResistence(multipliedNumber))
-        return resistence.filter(x => x !== undefined)
-    }
+    const multipliedNumber = getMultipledDigits(n)
+    if (multipliedNumber === undefined) return memo;
+    memo.push(multipliedNumber)
+    return getResistence(multipliedNumber, [...memo])
 }
 
 const resistence = getResistence(882)
